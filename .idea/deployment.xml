@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="remoteserver">
+    <serverData>
+      <paths name="remoteserver">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/var/lib/tomcat8/webapps/ROOT" local="$PROJECT_DIR$/target/paymygift-1.0-SNAPSHOT" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/var/lib/tomcat8/webapps/ROOT" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

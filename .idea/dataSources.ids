@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - paymygift@localhost [2]" uuid="4c9fd075-a110-4782-856b-65a9edd097d6">
+    <database-info product="MySQL" version="5.7.10-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="paymygift"/>
+    <table name="card" schema="" catalog="paymygift" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CARD_TYPE" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="NUMBER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK1i3h2ymb82vawuc5jw652ig58" table="user" schema="" catalog="paymygift" columns="card_id"/>
+    </table>
+    <table name="donation" schema="" catalog="paymygift" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="COMMENT_TEXT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DATE" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="DONATION" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="gift_GIFT_ID" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="userWhoDonate_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="userWhomDonate_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK53q4ydgfhoio56tvae8eaeahj" columns="userWhoDonate_id" ref-table="user" ref-schema="" ref-catalog="paymygift" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK86wufkjj6u0gbyv6p31s8862c" columns="gift_GIFT_ID" ref-table="gift" ref-schema="" ref-catalog="paymygift" ref-columns="GIFT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKjuro4co47neli8ney8iygowf5" columns="userWhomDonate_id" ref-table="user" ref-schema="" ref-catalog="paymygift" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK53q4ydgfhoio56tvae8eaeahj" unique="false" columns="userWhoDonate_id"/>
+      <index name="FK86wufkjj6u0gbyv6p31s8862c" unique="false" columns="gift_GIFT_ID"/>
+      <index name="FKjuro4co47neli8ney8iygowf5" unique="false" columns="userWhomDonate_id"/>
+    </table>
+    <table name="gift" schema="" catalog="paymygift" type="TABLE">
+      <column name="GIFT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CATEGORY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COLLECTED" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="DATE" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="EXPERATION_DATE" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="GIFT_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LINK" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="MODERATED" sqlType="BIT" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="PRICE" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="PUBLIC_UUID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="COLLECTED_GIFT" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <primary-key name="PRIMARY" columns="GIFT_ID"/>
+      <foreign-key name="FKq42fm8ntnvdl8drnnjxvlkayt" columns="user_id" ref-table="user" ref-schema="" ref-catalog="paymygift" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK86wufkjj6u0gbyv6p31s8862c" table="donation" schema="" catalog="paymygift" columns="gift_GIFT_ID"/>
+      <exported-key name="FK2lweekl5il8ys13lk1185ni0q" table="gift_media_file" schema="" catalog="paymygift" columns="Gift_GIFT_ID"/>
+      <exported-key name="FKf7go8lahes88jvrdspavfucwm" table="user_gift" schema="" catalog="paymygift" columns="giftList_GIFT_ID"/>
+      <index name="FKq42fm8ntnvdl8drnnjxvlkayt" unique="false" columns="user_id"/>
+    </table>
+    <table name="gift_media_file" schema="" catalog="paymygift" type="TABLE">
+      <column name="Gift_GIFT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="mediaFiles_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="FK2lweekl5il8ys13lk1185ni0q" columns="Gift_GIFT_ID" ref-table="gift" ref-schema="" ref-catalog="paymygift" ref-columns="GIFT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKpvpqju9joxjj1k8p4espmruaw" columns="mediaFiles_id" ref-table="media_file" ref-schema="" ref-catalog="paymygift" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UK_i82mm10ej7rpv8brusucitxxn" unique="true" columns="mediaFiles_id"/>
+      <index name="FK2lweekl5il8ys13lk1185ni0q" unique="false" columns="Gift_GIFT_ID"/>
+    </table>
+    <table name="hibernate_sequence" schema="" catalog="paymygift" type="TABLE">
+      <column name="next_val" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+    </table>
+    <table name="media_file" schema="" catalog="paymygift" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="BIG_PHOTO_URL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DATE" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="SMALL_PHOTO_URL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="UUID" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VIDEO_TITLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="VIDEO_URL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FKpvpqju9joxjj1k8p4espmruaw" table="gift_media_file" schema="" catalog="paymygift" columns="mediaFiles_id"/>
+    </table>
+    <table name="user" schema="" catalog="paymygift" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AVATAR_URL" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BIRTHDAY_DATE" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="EMAIL" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FACEBOOK_ID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="GENDER" sqlType="BIT" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="LOGIN" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="MAXIMUM_GIFTS" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="NICK_NAME" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PRIVATE_UUID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PUBLIC_UUID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TWITTER_ID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="VK_ID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="card_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK1i3h2ymb82vawuc5jw652ig58" columns="card_id" ref-table="card" ref-schema="" ref-catalog="paymygift" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK53q4ydgfhoio56tvae8eaeahj" table="donation" schema="" catalog="paymygift" columns="userWhoDonate_id"/>
+      <exported-key name="FKjuro4co47neli8ney8iygowf5" table="donation" schema="" catalog="paymygift" columns="userWhomDonate_id"/>
+      <exported-key name="FKq42fm8ntnvdl8drnnjxvlkayt" table="gift" schema="" catalog="paymygift" columns="user_id"/>
+      <exported-key name="FKe1r7duc3c6l120vrc828eqst0" table="user_gift" schema="" catalog="paymygift" columns="User_id"/>
+      <index name="UK_ejfk3g58oxsgbb4ju3u4fhivk" unique="true" columns="EMAIL"/>
+      <index name="UK_m6gjtxi6t4thhq8x960qif5cy" unique="true" columns="LOGIN"/>
+      <index name="FK1i3h2ymb82vawuc5jw652ig58" unique="false" columns="card_id"/>
+    </table>
+    <table name="user_gift" schema="" catalog="paymygift" type="TABLE">
+      <column name="User_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="giftList_GIFT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="FKe1r7duc3c6l120vrc828eqst0" columns="User_id" ref-table="user" ref-schema="" ref-catalog="paymygift" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FKf7go8lahes88jvrdspavfucwm" columns="giftList_GIFT_ID" ref-table="gift" ref-schema="" ref-catalog="paymygift" ref-columns="GIFT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UK_92v9xcpnhnr0smmmgymokwr4r" unique="true" columns="giftList_GIFT_ID"/>
+      <index name="FKe1r7duc3c6l120vrc828eqst0" unique="false" columns="User_id"/>
+    </table>
+  </data-source>
+</component>
