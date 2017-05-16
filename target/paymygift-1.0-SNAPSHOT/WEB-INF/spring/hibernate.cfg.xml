@@ -14,8 +14,6 @@
         <property name="hibernate.jdbc.batch_size">10</property>
         <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
-
-
     </session-factory>
 </hibernate-configuration>
 

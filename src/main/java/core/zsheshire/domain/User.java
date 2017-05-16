@@ -16,7 +16,8 @@ import java.util.*;
 @Component
 @Entity
 @NodeEntity
-@JsonIgnoreProperties(value = {"enabled","user"})
+@Table(name = "USER")
+@JsonIgnoreProperties(value = {"enabled", "user"})
 public class User {
 
     @Id
@@ -42,15 +43,19 @@ public class User {
     private Date dateBirth;
     @Column(name = "DEATH")
     private Date dateDeath;
-
+    @Column(name = "REAL_USER")
+    private boolean real_user;
     @Column(name = "ENABLED")
     private Boolean enabled = true;
+    @Column(name = "PUBLIC_UUID")
+    private String publicUUID;
 
     @Transient
     @Relationship
     private User user;
 
     @OneToMany
+    @org.neo4j.ogm.annotation.Transient
     private List<MediaFile> mediaFiles;
 
     public User() {

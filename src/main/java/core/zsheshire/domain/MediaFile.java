@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Component
+@Table(name = "MEDIA_FILE")
 @JsonIgnoreProperties(value = "user")
 public class MediaFile {
     @Id

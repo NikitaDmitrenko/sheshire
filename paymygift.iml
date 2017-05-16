@@ -18,6 +18,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="sessionFactory" value="dataSource" />
           <unit-entry name="src:main:webapp:WEB-INF:spring:hibernate.cfg.xml" value="0dc50a53-7b4b-467e-8e52-d1c5621d14ca" />
         </datasource-map>
         <naming-strategy-map>

@@ -44,13 +44,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .anonymous().disable()
                 .authorizeRequests()
-                .antMatchers("/oauth/token").permitAll().
-                and().
-                formLogin().loginPage("/admin/login").loginProcessingUrl("/j_spring_security_check").
-                defaultSuccessUrl("/admin/page?step=0").
-                failureUrl("/error").
-                usernameParameter("username").
-                passwordParameter("password");
+                .antMatchers("/oauth/token").permitAll();
     }
 
     @Override

@@ -16,69 +16,213 @@
     <schema id="10" parent="1" name="tripod"/>
     <table id="11" parent="2" name="authorities"/>
     <table id="12" parent="2" name="hibernate_sequence"/>
-    <table id="13" parent="2" name="oauth_access_token"/>
-    <table id="14" parent="2" name="oauth_refresh_token"/>
-    <column id="15" parent="11" name="USERNAME">
+    <table id="13" parent="2" name="mediafile"/>
+    <table id="14" parent="2" name="oauth_access_token"/>
+    <table id="15" parent="2" name="oauth_approvals"/>
+    <table id="16" parent="2" name="oauth_refresh_token"/>
+    <table id="17" parent="2" name="user"/>
+    <table id="18" parent="2" name="user_mediafile"/>
+    <column id="19" parent="11" name="USERNAME">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="11" name="AUTHORITY">
+    <column id="20" parent="11" name="AUTHORITY">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="17" parent="11" name="PRIMARY">
+    <key id="21" parent="11" name="PRIMARY">
       <ColNames>USERNAME</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="18" parent="12" name="next_val">
+    <column id="22" parent="12" name="next_val">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
     </column>
-    <column id="19" parent="13" name="token_id">
+    <column id="23" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="13" name="BIG_PHOTO">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="25" parent="13" name="SMALL_PHOTO">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="26" parent="13" name="VIDEO">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="27" parent="13" name="user_id">
+      <Position>5</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <index id="28" parent="13" name="FK57h0e202xo7v85iwjg00mqv3l">
+      <ColNames>user_id</ColNames>
+    </index>
+    <key id="29" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="30" parent="13" name="FK57h0e202xo7v85iwjg00mqv3l">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>shezire</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="31" parent="14" name="token_id">
       <Position>1</Position>
       <DataType>varchar(256)|0</DataType>
     </column>
-    <column id="20" parent="13" name="token">
+    <column id="32" parent="14" name="token">
       <Position>2</Position>
       <DataType>blob|0</DataType>
     </column>
-    <column id="21" parent="13" name="authentication_id">
+    <column id="33" parent="14" name="authentication_id">
       <Position>3</Position>
       <DataType>varchar(256)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="13" name="user_name">
+    <column id="34" parent="14" name="user_name">
       <Position>4</Position>
       <DataType>varchar(256)|0</DataType>
     </column>
-    <column id="23" parent="13" name="client_id">
+    <column id="35" parent="14" name="client_id">
       <Position>5</Position>
       <DataType>varchar(256)|0</DataType>
     </column>
-    <column id="24" parent="13" name="authentication">
+    <column id="36" parent="14" name="authentication">
       <Position>6</Position>
       <DataType>blob|0</DataType>
     </column>
-    <column id="25" parent="13" name="refresh_token">
+    <column id="37" parent="14" name="refresh_token">
       <Position>7</Position>
       <DataType>varchar(256)|0</DataType>
     </column>
-    <key id="26" parent="13" name="PRIMARY">
+    <key id="38" parent="14" name="PRIMARY">
       <ColNames>authentication_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="27" parent="14" name="token_id">
+    <column id="39" parent="15" name="userId">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="40" parent="15" name="clientId">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="41" parent="15" name="scope">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="42" parent="15" name="status">
+      <Position>4</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="43" parent="15" name="expiresAt">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="44" parent="15" name="lastModifiedAt">
+      <Position>6</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
+    </column>
+    <column id="45" parent="16" name="token_id">
       <Position>1</Position>
       <DataType>varchar(256)|0</DataType>
     </column>
-    <column id="28" parent="14" name="token">
+    <column id="46" parent="16" name="token">
       <Position>2</Position>
       <DataType>blob|0</DataType>
     </column>
-    <column id="29" parent="14" name="authentication">
+    <column id="47" parent="16" name="authentication">
       <Position>3</Position>
       <DataType>blob|0</DataType>
     </column>
+    <column id="48" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="17" name="ADDRESS">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="50" parent="17" name="CONTACT">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="51" parent="17" name="BIRTH">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="52" parent="17" name="DEATH">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="53" parent="17" name="ENABLED">
+      <Position>6</Position>
+      <DataType>bit(1)|0</DataType>
+    </column>
+    <column id="54" parent="17" name="MOBILE_PHONE">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="55" parent="17" name="NAME">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="56" parent="17" name="PASSWORD">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="57" parent="17" name="SURNAME">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="58" parent="17" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="59" parent="18" name="User_id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="18" name="mediaFiles_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="61" parent="18" name="FKtje2frnvsmmr8l7das9gkmmek">
+      <ColNames>User_id</ColNames>
+    </index>
+    <index id="62" parent="18" name="UK_flnrk7es6emppjmm39jbv24nd">
+      <ColNames>mediaFiles_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="63" parent="18" name="UK_flnrk7es6emppjmm39jbv24nd">
+      <ColNames>mediaFiles_id</ColNames>
+      <UnderlyingIndexName>UK_flnrk7es6emppjmm39jbv24nd</UnderlyingIndexName>
+    </key>
+    <foreign-key id="64" parent="18" name="FKtje2frnvsmmr8l7das9gkmmek">
+      <ColNames>User_id</ColNames>
+      <RefSchemaName>shezire</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="65" parent="18" name="FK6ooypw9r4ynepr12v1004hjtu">
+      <ColNames>mediaFiles_id</ColNames>
+      <RefSchemaName>shezire</RefSchemaName>
+      <RefTableName>mediafile</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

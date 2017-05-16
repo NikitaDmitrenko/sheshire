@@ -12,12 +12,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class Neo4JConfiguration extends Neo4jConfiguration {
 
+
+
     @Bean
     public Configuration getConfiguration() {
         Configuration config = new Configuration();
         config.driverConfiguration()
                 .setDriverClassName("org.neo4j.ogm.drivers.http.driver.HttpDriver")
-                .setURI("http://neo4j:root@localhost:7474");
+                .setURI("http://neo4j:telez1213@46.101.245.186:7474");
         return config;
     }
 
